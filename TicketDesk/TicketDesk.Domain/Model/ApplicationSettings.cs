@@ -22,7 +22,7 @@ namespace TicketDesk.Domain.Model
         {
             //To ensure that missing database values for settings do not completely brick the
             //  entire instance, make sure all default settings are initialized in the ctor
-            ApplicationName = "TicketDesk";
+            ApplicationName = "CooperDesk";
             Permissions = new ApplicationPermissionsSetting();
             SelectLists = new ApplicationSelectListSetting();
             SecuritySettings = new ApplicationSecuritySetting();

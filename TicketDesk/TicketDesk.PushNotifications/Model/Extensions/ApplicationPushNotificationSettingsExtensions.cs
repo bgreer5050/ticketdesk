@@ -20,7 +20,7 @@ namespace TicketDesk.PushNotifications.Model
     {
         public static ApplicationPushNotificationSetting GetTicketDeskSettings(this DbSet<ApplicationPushNotificationSetting> settings)
         {
-            return settings.FirstOrDefault(s => s.ApplicationName == "TicketDesk");
+            return settings.FirstOrDefault(s => s.ApplicationName == "CooperDesk");
         }
     }
 }

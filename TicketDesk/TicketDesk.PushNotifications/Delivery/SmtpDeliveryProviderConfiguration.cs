@@ -24,7 +24,7 @@ namespace TicketDesk.PushNotifications.Delivery
             SmtpServer = "localhost";
             SmtpPort = 25;
             EnableSsl = false;
-            SmtpFromDisplayName = "TicketDesk";
+            SmtpFromDisplayName = "CooperDesk";
         }
 
         [Display(Name = "SMTPServerName", ResourceType = typeof(Strings))]
