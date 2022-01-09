@@ -75,17 +75,30 @@
         <div>
             <div id="main-menu-collapse" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    @if (ApplicationConfig.HomeEnabled)
-                    {
-                        <li class="@Html.IsActiveRoute("Index", "Home")">
-                            <a href="@Url.Action("Index", "Home", new { area = "" })"><i class="fa fa-home"></i> @_Layout.Home</a>
-                        </li>
-                    }
-                    <li class="@Html.IsActiveRoute("Index", "TicketCenter")">
-                        <a href="@Url.Action("Index", "TicketCenter", new {area = ""})"><i class="fa fa-ticket"></i> @_Layout.TicketCenter</a>
-                    </li>
+                    @*@if (ApplicationConfig.HomeEnabled)
+        {
+            <li class="@Html.IsActiveRoute("Index", "Home")">
+                <a href="@Url.Action("Index", "Home", new { area = "" })"><i class="fa fa-home"></i> @_Layout.Home</a>
+            </li>
+        }
+        <li class="@Html.IsActiveRoute("Index", "TicketCenter")">
+            <a href="@Url.Action("Index", "TicketCenter", new {area = ""})"><i class="fa fa-ticket"></i> @_Layout.TicketCenter</a>
+        </li>
+        <li class="@Html.IsActiveRoute("New", "Ticket")">
+            <a href="@Url.Action("New", "Ticket", new {area = ""})"><i class="fa fa-plus"></i> @_Layout.NewTicket</a>
+        </li>*@
+
                     <li class="@Html.IsActiveRoute("New", "Ticket")">
-                        <a href="@Url.Action("New", "Ticket", new {area = ""})"><i class="fa fa-plus"></i> @_Layout.NewTicket</a>
+                        <a href="@Url.Action("New", "Ticket", new {area = ""})"><i class="fa fa-plus"></i>Create a Ticket</a>
+                    </li>
+                    <li class="">
+                        <a href="#"><i class="fa fa-user"></i> My Tickets</a>
+                    </li>
+                    <li class="@Html.IsActiveRoute("Index", "TicketCenter")">
+                        <a href="@Url.Action("Index", "TicketCenter", new {area = ""})"><i class="fa fa-users"></i> All Tickets</a>
+                    </li>
+                    <li class="">
+                        <a href="#"><i class="fa fa-bar-chart"></i> Reporting</a>
                     </li>
                     <li role="separator" class="nav-divider"></li>
                 </ul>
@@ -139,7 +152,7 @@
         @RenderBody()
         <footer>
             <p class="text-muted">
-                <a href="https://github.com/NullDesk/TicketDesk">TicketDesk</a> v2.5 | &copy; 2008 - @DateTime.Now.Year | NullDesk Solutions (Stephen M. Redd)
+                <a href="@Url.Action("Index", "TicketCenter", new {area = ""})">CooperDesk</a> v2.5 | &copy; 2022 - @DateTime.Now.Year 
             </p>
         </footer>
     </div>

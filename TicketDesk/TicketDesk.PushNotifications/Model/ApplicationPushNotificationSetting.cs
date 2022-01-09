@@ -28,7 +28,7 @@ namespace TicketDesk.PushNotifications.Model
 
         public ApplicationPushNotificationSetting()
         {
-            ApplicationName = "TicketDesk";
+            ApplicationName = "CooperDesk";
             IsEnabled = false;
             IsBackgroundQueueEnabled = true;
             DeliveryIntervalMinutes = 2;
