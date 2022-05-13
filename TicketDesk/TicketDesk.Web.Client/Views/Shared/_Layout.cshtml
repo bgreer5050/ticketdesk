@@ -71,6 +71,10 @@
                    class="@Html.IsActiveRoute("New", "Ticket") btn btn-default navbar-btn hidden-sm hidden-md hidden-lg "><i class="fa fa-plus"></i></a>
             </div>
             @Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @*<div class="form form-inline pull-left-xs pull-left">*@
+            <span style="margin-left: -35px; font-size: 30px; ">  Atlantic Biologicals Corp</span>
+
+            @*</div>*@
         </div>
         <div>
             <div id="main-menu-collapse" class="collapse navbar-collapse">
@@ -135,17 +139,22 @@
         </div>
         @if (User.Identity.IsAuthenticated)
         {
-            <div class="container-fluid navbar-default" style="border-top: 1px solid #e7e7e7; padding: 7px;">
-                <div class="form form-inline pull-left-xs pull-right-sm">
-                    @{ Html.RenderAction("ProjectMenu", "Navigation"); }
-                    <div class="form-group hidden-xs">
-                        @Html.Partial("_QuickSearch")
-                    </div>
-                    <span class="hidden-xs">
-                        @Html.Partial("_AdminMenu")
-                    </span>
-                </div>
+    <div class="container-fluid navbar-default" style="border-top: 1px solid #e7e7e7; padding: 7px;">
+
+        @*<div class="form form-inline pull-left-xs pull-left">
+            Atlantic Biologicals Corp
+
+        </div>*@
+        <div class="form form-inline pull-left-xs pull-right-sm">
+            @{ Html.RenderAction("ProjectMenu", "Navigation"); }
+            <div class="form-group hidden-xs">
+                @Html.Partial("_QuickSearch")
             </div>
+            <span class="hidden-xs">
+                @Html.Partial("_AdminMenu")
+            </span>
+        </div>
+    </div>
                         }
     </nav>
     <div class="body-content">
