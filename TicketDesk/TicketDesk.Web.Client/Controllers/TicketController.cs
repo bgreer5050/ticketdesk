@@ -197,7 +197,7 @@ namespace TicketDesk.Web.Client.Controllers
         {
             bool IsEmailSended = false;
 
-            Utility.SendEmail()
+            //Utility.SendEmail()
 
             return IsEmailSended;
         }
