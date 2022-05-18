@@ -22,6 +22,7 @@ using TicketDesk.Domain;
 using TicketDesk.Domain.Model;
 using TicketDesk.IO;
 using TicketDesk.Localization.Controllers;
+using TicketDesk.Web.Client.Models;
 
 namespace TicketDesk.Web.Client.Controllers
 {
@@ -192,5 +193,13 @@ namespace TicketDesk.Web.Client.Controllers
             return ticket.TicketId != default(int);
         }
 
+        private async Task<bool> SendEmail(Ticket ticket)
+        {
+            bool IsEmailSended = false;
+
+            Utility.SendEmail()
+
+            return IsEmailSended;
+        }
     }
 }
