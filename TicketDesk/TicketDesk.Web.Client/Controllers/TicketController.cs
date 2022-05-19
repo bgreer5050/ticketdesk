@@ -23,6 +23,8 @@ using TicketDesk.Domain.Model;
 using TicketDesk.IO;
 using TicketDesk.Localization.Controllers;
 using TicketDesk.Web.Client.Models;
+using TicketDesk.Web.Identity;
+using TicketDesk.Web.Identity.Model;
 
 namespace TicketDesk.Web.Client.Controllers
 {
@@ -190,15 +192,50 @@ namespace TicketDesk.Web.Client.Controllers
             await Context.SaveChangesAsync();
             ticket.CommitPendingAttachments(tempId);
 
+            TdIdentityContext IdentityContext = new TdIdentityContext();
+
+            var user = IdentityContext.Users.Where(o => o.Id == ticket.AssignedTo).FirstOrDefault();
+
+            SendEmail(ticket, user);
+
             return ticket.TicketId != default(int);
         }
 
-        private async Task<bool> SendEmail(Ticket ticket)
+        private bool SendEmail(Ticket ticket,TicketDeskUser user)
         {
             bool IsEmailSended = false;
+            string ToEmail = user.Email;
+            try
+            {
+                string Body = $"Dear {ticket.AssignedTo}," + Environment.NewLine
+                              + "Ticket has been assign to you." + Environment.NewLine
+                              + $"Ticket title:{ticket.Title}" + Environment.NewLine
+                              + $"Ticket description:{ticket.Details}" + Environment.NewLine
+                              + "Thank you";
 
-            //Utility.SendEmail()
+                string Subject = $"{ticket.Title}";
 
+                string Admin1 = System.Configuration.ConfigurationManager.AppSettings["Admin1"].ToString();
+                string Admin2 = System.Configuration.ConfigurationManager.AppSettings["Admin2"].ToString();
+                string Admin3 = System.Configuration.ConfigurationManager.AppSettings["Admin3"].ToString();
+                try
+                {
+                    IsEmailSended = Utility.SendEmail(ToEmail, Body, Subject);
+                }
+                catch (Exception)
+                {
+                     
+                } 
+                
+                ToEmail = $"{Admin1};{Admin2};{Admin3}";
+                IsEmailSended = Utility.SendEmail(ToEmail, Body, Subject);
+                
+            }
+            catch (Exception)
+            {
+
+                
+            }
             return IsEmailSended;
         }
     }
