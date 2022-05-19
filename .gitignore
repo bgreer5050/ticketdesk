@@ -213,3 +213,6 @@ TicketDesk/TicketDesk.Web.Client/App_Data/ticketdesk-searchindex/
 TicketDesk/TicketDesk.Web.Client/App_Data/filestore/
 TicketDesk/.vs/
 **/*.vsext.disable
+/.vs/ProjectSettings.json
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
